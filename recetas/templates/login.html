@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Autenticacion APP</h1>
+
+<!--{{subtitulo}}-->
+<section>
+    <main class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <form id="formlogin" action="/ingresar/" method="POST" class="card card-body">
+                    
+                    {{error}}
+                    {% csrf_token %}
+                    <p>
+                        <label for="id_username">Username:</label>
+                        <input class="form-control" type="text" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" required id="id_username">
+                    </p>
+
+            
+                    <p>
+                        <label for="id_password">Password:</label>
+                        <input class="form-control" type="password" name="password" autocomplete="current-password" required id="id_password">
+                    </p>
+
+                    <p>
+                        <button class="form-control btn btn-warning">
+                            Ingresar
+                        </button>
+                    </p>
+                </form>
+
+
+                <button onclick="enviarFormulario()" class="form-control btn btn-warning">
+                    Ingresar JS
+                </button>
+
+                <!--Formulario automatico DJANDO-- form action="/ingresar/" method="POST" class="card card-body">
+
+                    {% csrf_token %}
+                    {{formulario_login.as_p}}
+
+                    <button class="form-control btn btn-warning">
+                        Ingresar
+                    </button>
+                </form-->
+            </div>
+        </div>    
+    </main>
+</section>
+
+<script>
+    function enviarFormulario() {
+        document.getElementById('formlogin').submit();
+    }
+    
+</script>
+{% endblock %}
