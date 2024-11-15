@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!--h1>EVENTAPP</h1-->
+
+<section>
+    <main class="container">
+
+        
+
+        
+
+          <div class="row justify-content-center">
+                      
+            {% for receta in getrecetas %}
+              <div class="card col-md-3 m-5">
+                <img src="{{receta.imagen}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{receta.nombre_receta}}</h5>
+                  <p class="card-text">{{receta.descripcion}}</p>
+                  
+                  <a href="#" class="btn btn-primary">Porciones: {{receta.porciones}}</a>
+                </div>
+              </div>
+            {% endfor %}
+    
+          </div>
+    </main>
+</section>
+    
+{% endblock %}

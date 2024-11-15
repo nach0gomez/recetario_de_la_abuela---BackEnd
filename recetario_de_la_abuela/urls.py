@@ -26,6 +26,7 @@ from ingredientes.api.router import router_ingrediente
 from recetas.api.router import router_recetas
 from recetaIngredientes.api.router import router_receta_ingrediente
 from favoritos.api.router import router_favoritos
+from recetas import views
 
 
 schema_view = get_schema_view(
@@ -42,6 +43,8 @@ public=True,
 )
 
 urlpatterns = [
+    path('get-recetas/', views.getReceta),
+    path('login/', views.Login),
     path('admin/', admin.site.urls),
     path('docs/', schema_view.with_ui('swagger', cache_timeout=0),name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0),name='schema-redoc'),
@@ -49,5 +52,6 @@ urlpatterns = [
     path('api/', include(router_ingrediente.urls)),
     path('api/', include(router_recetas.urls)),
     path('api/', include(router_favoritos.urls)),
+    path('api/', include(router_receta_ingrediente.urls)),
     path('api/', include(router_receta_ingrediente.urls)),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
